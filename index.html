@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelas Kita — Absensi</title>
+<meta name="description" content="Absensi kelas cepat: pilih status, pesan otomatis siap dikirim ke grup.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <span class="blob a"></span>
+  <span class="blob b"></span>
+  <span class="blob c"></span>
+  <span class="drift d1">✨</span>
+  <span class="drift d2">⭐</span>
+  <span class="drift d3">🍀</span>
+</div>
+
+<audio id="bgMusic" src="https://files.catbox.moe/ay90wc.mp3" loop preload="none"></audio>
+
+<button class="music-btn" id="musicBtn" aria-pressed="false" type="button">
+  <span id="musicIcon">🔈</span><span id="musicLabel">Musik</span>
+</button>
+
+<main class="page">
+
+  <section class="hero">
+    <div class="mascot" aria-hidden="true">
+      <div class="face"><span class="eye l"></span><span class="eye r"></span><span class="mouth"></span></div>
+    </div>
+
+    <h1>Kelas <span>Kita</span></h1>
+    <p class="tagline">Absen hari ini cukup dua langkah: pilih status, pesan otomatis siap dikirim ke grup.</p>
+
+    <ol class="steps">
+      <li><span class="num">1</span>Isi nama &amp; status</li>
+      <li><span class="num">2</span>Pesan tersalin otomatis</li>
+      <li><span class="num">3</span>Tempel di grup</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Absen sekarang</h2>
+
+    <form id="attendanceForm" novalidate>
+      <div class="field">
+        <label for="name">Nama kamu</label>
+        <input type="text" id="name" placeholder="Contoh: Dinda Ayu" maxlength="40" autocomplete="name" required>
+      </div>
+
+      <div class="field">
+        <label id="statusLabel">Kabar hari ini</label>
+        <div class="status-grid" role="group" aria-labelledby="statusLabel">
+          <button type="button" class="status hadir" data-status="Hadir" data-emoji="😎">
+            <span class="emoji">😎</span><span class="title">Hadir</span><small>Aku datang</small>
+          </button>
+          <button type="button" class="status izin" data-status="Izin" data-emoji="🙋">
+            <span class="emoji">🙋</span><span class="title">Izin</span><small>Ada keperluan</small>
+          </button>
+          <button type="button" class="status sakit" data-status="Sakit" data-emoji="🤒">
+            <span class="emoji">🤒</span><span class="title">Sakit</span><small>Kurang sehat</small>
+          </button>
+          <button type="button" class="status alpha" data-status="Alpha" data-emoji="😴">
+            <span class="emoji">😴</span><span class="title">Alpha</span><small>Tidak hadir</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="picked" id="picked">
+        <span id="pickedEmoji">👀</span>
+        <div><small>Status terpilih</small><strong id="pickedText">Belum memilih</strong></div>
+      </div>
+
+      <button type="submit" class="submit" id="submitBtn">Kirim Absen</button>
+    </form>
+  </section>
+
+  <p class="note">Kelas Kita bantu catat kehadiran lebih cepat — isi sekali, pesan langsung siap dikirim ke grup kelas.</p>
+
+  <footer>Dibuat oleh Tim Kelas Kita</footer>
+</main>
+
+<div class="overlay" id="modal">
+  <div class="modal">
+    <button class="close" id="closeModal" aria-label="Tutup" type="button">×</button>
+    <div class="badge">🎉</div>
+    <h2>Absen terkirim</h2>
+    <p>Pesan sudah tersalin otomatis. Buka grup, tempel, kirim.</p>
+    <div class="preview"><pre id="messagePreview"></pre></div>
+    <div class="actions">
+      <button class="btn ghost" id="copyBtn" type="button">Salin lagi</button>
+      <button class="btn solid" id="openWhatsapp" type="button">Buka Grup</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastIcon">✅</span><span id="toastText">Berhasil</span></div>
+<div id="confetti" aria-hidden="true"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
